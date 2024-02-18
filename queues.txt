@@ -1,0 +1,7 @@
+[general]
+persistentmembers = yes
+monitor-type = MixMonitor
+
+[adminDep]
+member =>SIP/admin
+member =>SIP/admin2

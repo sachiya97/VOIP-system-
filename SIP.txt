@@ -1,0 +1,90 @@
+[general]
+context=internal
+allowguest=no
+allowoverlap=no
+bindport=5060
+bindaddr=0.0.0.0
+srvlookup=no
+disallow=all
+allow=ulaw
+alwaysauthreject=yes
+canreinvite=no
+nat=yes
+session-timers=refuse
+localnet=192.168.1.0/255.255.255.0
+
+tlsenable=yes
+tlsbindaddr=0.0.0.0:5061
+tlscertfile=/etc/asterisk/asterisk.crt
+tlsprivatekey=/etc/asterisk/asterisk.key
+tlscafile=/etc/asterisk/ca.crt
+
+[ixnfocom]
+exten => s,1,DIAL(SIP/201,60)
+exten => s,n,Hangup()
+
+
+[outside] ;client/costurmer 
+type=friend
+host=dynamic
+secret=12345
+context=incoming
+
+[7002] ;Hot line
+type=friend
+host=dynamic
+secret=456
+context=internal
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;The employee who handle the Business enquiries;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[receptionist]
+type=friend
+host=dynamic
+secret=255255
+context=internal
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Admin Dep;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[admin]
+type=friend
+host=dynamic
+secret=3456
+context=internal
+
+
+
+[admin2] ;Member of the admin team;
+type=friend
+host=dynamic
+secret=789456
+context=internal
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;entrepreneur/owner;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[entrepreneur]
+type=friend
+host=dynamic
+secret=2345
+context=internal
+
+
+
+
+
+
+
+
+;[7003]
+;type=friend
+;host=192.168.1.101
+;secret=sachiya
+;context=internal
+;register => 7003:sachiya@192.168.1.100:5060/7003
